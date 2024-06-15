@@ -321,7 +321,7 @@ def create_lambda_deployment_pipeline(
 
 if __name__ == "__main__":
     # Check if running in GitHub Actions
-    running_in_github_actions = os.getenv('RUNNING_IN_GITHUB_ACTIONS', 'false') == 'true'
+    running_in_github_actions = os.getenv("RUNNING_IN_GITHUB_ACTIONS", "false") == "true"
 
     # Define the local code folder path
     if running_in_github_actions:
@@ -329,7 +329,7 @@ if __name__ == "__main__":
         code_folder = root_dir / "src"
     else:
         code_folder = Path("../src")
-        
+
     try:
         role = os.environ["ROLE"]
         bucket = os.environ.get("BUCKET", None)
