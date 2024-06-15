@@ -150,12 +150,15 @@ def create_tuning_pipeline(
 
 
 if __name__ == "__main__":
+    # Define the local code folder path
+    root_dir = Path(__file__).resolve().parent.parent
+    code_folder = root_dir / "src" 
     try:
         role = os.environ["ROLE"]
         bucket = os.environ.get("BUCKET", None)
         local_mode = os.environ.get("LOCAL_MODE", "False") == "True"
         s3_location = f"s3://{bucket}"
-        code_folder = Path("../src")
+        # code_folder = Path("../src")
         comet_api_key = os.environ["COMET_API_KEY"]
         comet_project_name = os.environ["COMET_PROJECT_NAME"]
         print(f"LOCAL_MODE: {local_mode}")
