@@ -2,6 +2,9 @@ name: CI Pipeline
 
 on: [push, pull_request]
 
+env:
+  BASE_DIR: /home/runner/work/mlops-aws-insurance/mlops-aws-insurance
+
 jobs:
   build:
     runs-on: ubuntu-latest
