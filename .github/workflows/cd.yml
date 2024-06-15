@@ -25,7 +25,12 @@ jobs:
 
     - name: Set PYTHONPATH
       run: echo "PYTHONPATH=$(pwd)" >> $GITHUB_ENV
+      
+    - name: Debug - List environment variables
+      run: env
 
+    - name: Debug - List current directory structure
+      run: ls -R
     - name: Run Model Quality Pipeline in SageMaker
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
