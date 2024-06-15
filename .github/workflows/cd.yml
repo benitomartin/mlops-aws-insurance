@@ -25,12 +25,10 @@ jobs:
 
     - name: Set PYTHONPATH
       run: echo "PYTHONPATH=$(pwd)" >> $GITHUB_ENV
-      
-    - name: Debug - List environment variables
-      run: env
 
-    - name: Debug - List current directory structure
-      run: ls -R
+    - name: Set environment variable for GitHub Actions
+      run: echo "RUNNING_IN_GITHUB_ACTIONS=true" >> $GITHUB_ENV
+
     - name: Run Model Quality Pipeline in SageMaker
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -42,6 +40,8 @@ jobs:
         COMET_PROJECT_NAME: ${{ secrets.COMET_PROJECT_NAME }}
         PIPELINE_MODEL_PACKAGE_GROUP: ${{ secrets.PIPELINE_MODEL_PACKAGE_GROUP }}
         MAE_THRESHOLD: ${{ secrets.MAE_THRESHOLD }}
+        RUNNING_IN_GITHUB_ACTIONS: ${{ env.RUNNING_IN_GITHUB_ACTIONS }}
+
       run: |
         python aws_pipelines/model_quality_pipeline.py
 

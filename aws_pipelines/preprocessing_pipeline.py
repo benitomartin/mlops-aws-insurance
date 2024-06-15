@@ -110,8 +110,10 @@ def define_processing_step(
     return ProcessingStep(
         name="preprocess-data",
         step_args=processor.run(
-            # code=f"{(code_folder / 'processing' / 'script.py').as_posix()}",
-            code=str(code_folder / 'processing' / 'script.py'),
+            code=f"{(code_folder / 'processing' / 'script.py').as_posix()}",
+            # code=str(code_folder / 'processing' / 'script.py'),
+            # code=(code_folder / 'processing' / 'script.py').as_posix(),
+
 
             inputs=[
                 ProcessingInput(
@@ -231,9 +233,16 @@ def create_preprocessing_pipeline(
 
 
 if __name__ == "__main__":
+    # Check if running in GitHub Actions
+    running_in_github_actions = os.getenv('RUNNING_IN_GITHUB_ACTIONS', 'false') == 'true'
+
     # Define the local code folder path
-    root_dir = Path(__file__).resolve().parent.parent
-    code_folder = root_dir / "src"
+    if running_in_github_actions:
+        root_dir = Path(__file__).resolve().parent.parent
+        code_folder = root_dir / "src"
+    else:
+        code_folder = Path("../src")
+        
     try:
         role = os.environ["ROLE"]
         bucket = os.environ.get("BUCKET", None)

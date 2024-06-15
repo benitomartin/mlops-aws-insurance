@@ -312,7 +312,7 @@ def create_data_quality_pipeline(
     bucket: str = None,
     local_mode: bool = False,
     s3_location: str = None,
-    code_folder: str = None,
+    code_folder: Path = None,
     comet_api_key: str = None,
     comet_project_name: str = None,
     use_tuning_step: bool = True,
@@ -497,9 +497,16 @@ def create_data_quality_pipeline(
 
 
 if __name__ == "__main__":
+    # Check if running in GitHub Actions
+    running_in_github_actions = os.getenv('RUNNING_IN_GITHUB_ACTIONS', 'false') == 'true'
+
     # Define the local code folder path
-    root_dir = Path(__file__).resolve().parent.parent
-    code_folder = root_dir / "src"    
+    if running_in_github_actions:
+        root_dir = Path(__file__).resolve().parent.parent
+        code_folder = root_dir / "src"
+    else:
+        code_folder = Path("../src")  
+        
     try:
         role = os.environ["ROLE"]
         bucket = os.environ.get("BUCKET", None)
@@ -538,7 +545,7 @@ if __name__ == "__main__":
         )
 
         # Start the pipeline execution (if required)
-        model_quality_pipeline.start()
+        # model_quality_pipeline.start()
 
     except KeyError as e:
         print(f"Environment variable not set: {e}")

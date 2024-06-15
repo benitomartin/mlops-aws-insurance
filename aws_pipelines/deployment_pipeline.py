@@ -320,12 +320,22 @@ def create_lambda_deployment_pipeline(
 
 
 if __name__ == "__main__":
+    # Check if running in GitHub Actions
+    running_in_github_actions = os.getenv('RUNNING_IN_GITHUB_ACTIONS', 'false') == 'true'
+
+    # Define the local code folder path
+    if running_in_github_actions:
+        root_dir = Path(__file__).resolve().parent.parent
+        code_folder = root_dir / "src"
+    else:
+        code_folder = Path("../src")
+        
     try:
         role = os.environ["ROLE"]
         bucket = os.environ.get("BUCKET", None)
         local_mode = os.environ.get("LOCAL_MODE", "False") == "True"
         s3_location = f"s3://{bucket}"
-        code_folder = Path("../src")
+        # code_folder = Path("../src")
         comet_api_key = os.environ["COMET_API_KEY"]
         comet_project_name = os.environ["COMET_PROJECT_NAME"]
         basic_model_package_group = os.environ["BASIC_MODEL_PACKAGE_GROUP"]
