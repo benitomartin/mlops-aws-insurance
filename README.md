@@ -61,7 +61,7 @@ The dataset was obtained from Kaggle and contains 1338 rows and 7 columns to pre
 
 ## Project Set Up
 
-The Python version used for this project is Python 3.9.
+The Python version used for this project is Python 3.10.
 
 1. Clone the repo (or download it as a zip file):
 
@@ -69,7 +69,7 @@ The Python version used for this project is Python 3.9.
    git clone https://github.com/benitomartin/mlops-aws-insurance.git
    ```
 
-2. Create the virtual environment named `main-env` using Conda with Python version 3.9:
+2. Create the virtual environment named `main-env` using Conda with Python version 3.10:
 
    ```bash
    conda create -n main-env python=3.10
