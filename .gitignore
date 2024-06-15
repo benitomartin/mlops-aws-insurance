@@ -162,7 +162,7 @@ cython_debug/
 #.idea/
 
 
-notebooks/pipelines_aws.ipynp
+notebooks/pipelines_aws.ipynb
 src/monitoring/
 src/pipeline/inference.py
 src/pipeline/requirements.txt
