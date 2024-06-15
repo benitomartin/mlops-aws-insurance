@@ -34,7 +34,7 @@ The project has been structured with the following folders and files:
   - ✅ `tuning_pipeline.py`: model fine tuning
   - ✅ `evaluate_pipeline.py`: model evaluation
   - ✅ `register_pipeline.py`: model registry
-  - ✅ `cond_register_pipeline.py`: model conditional registry (base on MAE Threshold)
+  - ✅ `cond_register_pipeline.py`: model conditional registry (based on MAE Threshold)
   - ✅ `deployment_pipeline.py`: model automatic deployment
   - ✅ `manual_deployment_pipeline.py`:  model manual deployment (requires manual approval on AWS)
   - ✅ `inference_pipeline.py`: model automatic deployment and endpoint creation
