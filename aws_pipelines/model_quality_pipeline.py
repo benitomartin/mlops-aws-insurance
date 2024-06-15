@@ -538,7 +538,7 @@ if __name__ == "__main__":
         )
 
         # Start the pipeline execution (if required)
-        # model_quality_pipeline.start()
+        model_quality_pipeline.start()
 
     except KeyError as e:
         print(f"Environment variable not set: {e}")
