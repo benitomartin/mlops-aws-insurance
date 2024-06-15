@@ -4,7 +4,7 @@
   <img width="976" alt="aws" src="https://github.com/benitomartin/benitomartin/assets/116911431/a620b68c-30a2-4666-986e-642046ea435b">
 </p>
 
-This is a personal MLOps project based on a [Kaggle](https://www.kaggle.com/datasets/mirichoi0218/insurance) dataset for medical insurance costs prediction. 
+This is a personal MLOps project based on a [Kaggle](https://www.kaggle.com/datasets/mirichoi0218/insurance) dataset for medical insurance costs prediction. It contains several AWS SageMaker pipelines from preprocessing till deployment, inference and monitoring.
 
 Feel free to ⭐ and clone this repo 😉
 
