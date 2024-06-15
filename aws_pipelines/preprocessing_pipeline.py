@@ -110,7 +110,9 @@ def define_processing_step(
     return ProcessingStep(
         name="preprocess-data",
         step_args=processor.run(
-            code=f"{(code_folder / 'processing' / 'script.py').as_posix()}",
+            # code=f"{(code_folder / 'processing' / 'script.py').as_posix()}",
+            code=str(code_folder / 'processing' / 'script.py'),
+
             inputs=[
                 ProcessingInput(
                     source=dataset_location,

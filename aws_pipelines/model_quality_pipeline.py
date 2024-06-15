@@ -44,7 +44,6 @@ from aws_pipelines.tuning_pipeline import create_tuning_step
 # Load environment variables if not provided
 load_dotenv()
 
-
 def model_step(pipeline_model: PipelineModel = None, config: dict = None) -> ModelStep:
     """
     Create a ModelStep to create a SageMaker model.
@@ -536,7 +535,7 @@ if __name__ == "__main__":
         )
 
         # Start the pipeline execution (if required)
-        model_quality_pipeline.start()
+        # model_quality_pipeline.start()
 
     except KeyError as e:
         print(f"Environment variable not set: {e}")
