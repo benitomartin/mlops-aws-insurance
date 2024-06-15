@@ -26,10 +26,17 @@ jobs:
     - name: Set PYTHONPATH
       run: echo "PYTHONPATH=$(pwd)" >> $GITHUB_ENV
 
-    - name: Run Model Quality Pipeline
+    - name: Run Model Quality Pipeline in SageMaker
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_DEFAULT_REGION: 'eu-central-1'
+        ROLE: ${{ secrets.AWS_ROLE }}
+        BUCKET: ${{ secrets.AWS_BUCKET }}
+        COMET_API_KEY: ${{ secrets.COMET_API_KEY }}
+        COMET_PROJECT_NAME: ${{ secrets.COMET_PROJECT_NAME }}
+        PIPELINE_MODEL_PACKAGE_GROUP: ${{ secrets.PIPELINE_MODEL_PACKAGE_GROUP }}
+        MAE_THRESHOLD: ${{ secrets.MAE_THRESHOLD }}
       run: |
         python aws_pipelines/model_quality_pipeline.py
 
