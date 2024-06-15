@@ -31,7 +31,6 @@ coverage: ## Run tests with coverage
 
 
 clean: ## Clean up generated files
-	rm -rf htmlcov
 	rm -rf .pytest_cache
 	rm -rf __pycache__
 	find . -type d -name '__pycache__' -exec rm -rf {} +
