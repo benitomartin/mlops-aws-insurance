@@ -497,11 +497,13 @@ def create_data_quality_pipeline(
 
 
 if __name__ == "__main__":
+
     try:
         role = os.environ["ROLE"]
         bucket = os.environ.get("BUCKET", None)
         local_mode = os.environ.get("LOCAL_MODE", "False") == "True"
         s3_location = f"s3://{bucket}"
+        # code_folder = Path("../src")
         code_folder = Path("../src")
         comet_api_key = os.environ["COMET_API_KEY"]
         comet_project_name = os.environ["COMET_PROJECT_NAME"]

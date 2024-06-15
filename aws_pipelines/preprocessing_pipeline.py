@@ -110,8 +110,8 @@ def define_processing_step(
     return ProcessingStep(
         name="preprocess-data",
         step_args=processor.run(
-            # code=f"{(code_folder / 'processing' / 'script.py').as_posix()}",
-            code=str(code_folder / 'processing' / 'script.py'),
+            code=f"{(code_folder / 'processing' / 'script.py').as_posix()}",
+            # code=str(code_folder / 'processing' / 'script.py'),
 
             inputs=[
                 ProcessingInput(
@@ -231,12 +231,15 @@ def create_preprocessing_pipeline(
 
 
 if __name__ == "__main__":
+    # Define the local code folder path
+    root_dir = Path(__file__).resolve().parent.parent
+    code_folder = root_dir / "src"
     try:
         role = os.environ["ROLE"]
         bucket = os.environ.get("BUCKET", None)
         local_mode = os.environ.get("LOCAL_MODE", "False") == "True"
         s3_location = f"s3://{bucket}"
-        code_folder = Path("../src")
+        # code_folder = Path("../src")
         print(f"LOCAL_MODE: {local_mode}")
 
         if not bucket:
